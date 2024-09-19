@@ -1,9 +1,7 @@
-version: '3.3'
-
 services:
 
   ghost:
-    image: ghost:5.75
+    image: ghost:latest
     container_name: ghost
     restart: unless-stopped    
     environment:
@@ -12,16 +10,16 @@ services:
       database__connection__user: root
       database__connection__password: p4ssw0rd
       database__connection__database: ghost
-      url: 'http://localhost:8200'
+      url: "http://localhost:8200"
     ports:
-      - '8200:2368'
+      - "8200:2368"
     depends_on:
       - db
     volumes:
       - ./ghost:/var/lib/ghost/content
 
   db:
-    image: mariadb:11.2
+    image: mariadb:latest
     container_name: ghost-db    
     restart: unless-stopped
     environment:
